@@ -16,15 +16,13 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-
-    respond_to do |format|
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.build(task_params)
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        redirect_to root_path
       else
-        format.html { render :new }
+        render :new
       end
-    end
   end
 
   def update

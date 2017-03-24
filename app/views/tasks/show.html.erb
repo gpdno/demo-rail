@@ -12,22 +12,22 @@
 
 <p>
   <strong>Project:</strong>
-  <%= @task.project %>
+  <%= @task.project.name %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @task.user %>
+  <%= @task.user.name %>
 </p>
 
 <p>
   <strong>Priority:</strong>
-  <%= @task.priority %>
+  <%= @task.priority.order %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @task.status %>
+  <%= @task.status.description %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |

@@ -15,5 +15,56 @@
   <%= @project.user.name %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
+<h1>Listing Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Comment</th>
+      <th>Project</th>
+      <th>User</th>
+      <th>Priority</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.action %></td>
+        <td><%= task.comment %></td>
+        <td><%= task.project.name %></td>
+        <td><%= task.user.name %></td>
+        <td><%= task.priority.order %></td>
+        <td><%= task.status.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<h2>Tasks</h2>
+<%= form_for([@project, @task], remote: true, :html => {class: "form-horizontal", role: "form"}) do |ff| %>
+  <div>
+    <%= ff.label :action %>
+    <%= ff.text_field :action %>
+    
+    <%= ff.label :comment %>
+    <%= ff.text_field :comment %>
+    
+    <%= ff.label :user %>
+    <%= ff.text_field :user %>
+    
+    <%= ff.label :priority %>
+    <%= ff.text_field :priority %>
+    
+    <%= ff.label :status %>
+    <%= ff.text_field :status %>
+    
+    <%= ff.submit "Add task", class: "btn btn-primary btn-lg btn-xlarge" %>
+  </div>
+<% end %>
+
 <%= link_to 'Back', projects_path %>

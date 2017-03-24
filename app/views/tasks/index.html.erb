@@ -20,10 +20,10 @@
       <tr>
         <td><%= task.action %></td>
         <td><%= task.comment %></td>
-        <td><%= task.project %></td>
-        <td><%= task.user %></td>
-        <td><%= task.priority %></td>
-        <td><%= task.status %></td>
+        <td><%= task.project.name %></td>
+        <td><%= task.user.name %></td>
+        <td><%= task.priority.order %></td>
+        <td><%= task.status.description %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
